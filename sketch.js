@@ -112,25 +112,36 @@ function draw() {
         
     } */
 
-   
-    strokeWeight(3)
-    //left
-    stroke(palette[3]);
     let previousX = 0;
-    stroke(255)
-    strokeWeight(1)
+    beginShape()
+    let xoff = 0;
     for (let a = 0; a < width; a++) {
-        line(previousX + a * distance, n, previousX + a * distance, n + 30);
-        previousX = a * distance + previousX
-
+        stroke(255)
+        strokeWeight(1)
+        noFill()
+        /* line(previousX + a * distance, n, previousX, n);
+        previousX = a * distance + previousX */
+        let yV = noise(xoff) * n;
+        vertex(a, yV);
+        xoff += 0.0005
+        t += 0.000005;
     }
-    t += 0.005;
-    yL--;
-    
-    if(yL < 0) {
-        yL = height;
-    }
+    endShape()
 
+    beginShape()
+    xoff = 0;
+    for (let a = 0; a < width; a++) {
+        stroke(255)
+        strokeWeight(1)
+        noFill()
+        /* line(previousX + a * distance, n, previousX, n);
+        previousX = a * distance + previousX */
+        let yV = noise(xoff) * n;
+        vertex(a, yV + 5);
+        xoff += 0.0005
+        t += 0.000009;
+    }
+    endShape()
     
 }
 
